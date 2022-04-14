@@ -108,13 +108,22 @@ class DB
     }
 }
 
-function dd($array){
+function dd($array)
+{
     echo "<pre>";
     print_r($array);
     echo "</pre>";
 }
 
-function to($url){
+function to($url)
+{
     header("location:" . $url);
 }
 
+
+$Admin = new DB('admin');
+$Bottom = new DB('bottom');
+$Goods = new DB('goods');
+$Member = new DB('member');
+$Ord = new DB('ord');
+$Type = new DB('type');
