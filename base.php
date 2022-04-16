@@ -127,3 +127,4 @@ $Goods = new DB('goods');
 $Member = new DB('member');
 $Ord = new DB('ord');
 $Type = new DB('type');
+

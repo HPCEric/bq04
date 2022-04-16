@@ -20,10 +20,40 @@
     <tr>
         <td class="tt ct">驗證碼</td>
         <td class="pp">
+            <?php
+            $a = rand(10, 99);
+            $b = rand(10, 99);
+            $_SESSION['ans'] = $a + $b;
+            echo $a . "+" . $b . "=";
+            ?>
             <input type="text" name="ans" id="ans">
         </td>
     </tr>
 </table>
 <div class="ct">
-    <button>確認</button>
+    <button onclick="login()">確認</button>
 </div>
+
+<script>
+    function login(){
+        $.post("api/chk_ans.php",{
+            ans:$("#ans").val()
+        },(chk)=>{
+            if(parseInt(chk)==1){
+                $.post('api/chk_pw.php',{
+                    acc:$('#acc').val(),
+                    pw:$('#pw').val(),
+                    table:'member'
+                },(res)=>{
+                    if(parseInt(res)==1){
+                        location.href='index.php';
+                    }else{
+                        alert('acc or password is not correct');
+                    }
+                })
+            }else{
+                alert("sorry,ans is wrong")
+            }
+        })
+    }
+</script>
