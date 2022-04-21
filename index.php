@@ -35,6 +35,35 @@ include_once "base.php";
                 </div>
                 <div id="left" class="ct">
                         <div style="min-height:400px;">
+                                <div class="ww">
+                                        <a href="?type=0">全部商品(<?= $Goods->math('count', '*', ['sh' => 1]); ?>)</a>
+                                </div>
+
+                                <?php
+                                //大分類
+                                $bigs = $Type->all(['parent' => 0]);
+                                foreach ($bigs as $big) {
+                                        echo "<div class='ww'>";
+                                        echo "<a href='?type={$big['id']}'>";
+                                        echo $big['name'];
+                                        echo "(" . $Goods->math('count', '*', ['big' => $big['id'], 'sh' => 1]) . ")";
+                                        echo "</a>";
+                                        //中分類
+                                        $mids = $Type->all(['parent' => $big['id']]);
+                                        if (count($mids) > 0) {
+                                                foreach ($mids as $mid) {
+                                                        echo "<div class='s'>";
+                                                        echo "<a href='?type={$mid['id']}' style='background:lightblue'>";
+                                                        echo $mid['name'];
+                                                        echo "(" . $Goods->math('count', '*', ['mid' => $mid['id'], 'sh' => 1]) . ")";
+                                                        echo "</a>";
+                                                        echo "</div>";
+                                                }
+                                        }
+                                        echo "</div>";
+                                }
+                                ?>
+
                         </div>
                         <span>
                                 <div>進站總人數</div>
@@ -54,7 +83,7 @@ include_once "base.php";
                         ?>
                 </div>
                 <div id="bottom" style="line-height:70px;background:url(icon/bot.png); color:#FFF;" class="ct">
-                        <?=$Bottom->find(1)['bottom'];?>
+                        <?= $Bottom->find(1)['bottom']; ?>
                 </div>
         </div>
 
