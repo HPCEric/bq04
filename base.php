@@ -91,6 +91,7 @@ class DB
             $sql = "INSERT INTO $this->table (`$col`) VALUES ('$values')";
         }
         return $this->pdo->exec($sql);
+        // echo $sql;
     }
 
     function del($id)
