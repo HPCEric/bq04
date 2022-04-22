@@ -31,7 +31,7 @@ include_once "base.php";
 				<?=in_array(3,$_SESSION['pr'])?"<a href='?do=mem'>會員管理</a>":"";?>
 				<?=in_array(4,$_SESSION['pr'])?"<a href='?do=bot'>頁尾版權管理</a>":"";?>
 				<?=in_array(5,$_SESSION['pr'])?"<a href='?do=news'>最新消息管理</a>":"";?>
-				<a href="?do=logout" style="color:#f00;">登出</a>
+				<a href="javascript:logout('admin')" style="color:#f00;">登出</a>
 			</div>
 		</div>
 		<div id="right">
