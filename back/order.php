@@ -1,4 +1,4 @@
-<h1 class="ct">會員管理</h1>
+<h1 class="ct">訂單管理</h1>
 
 <table class="all">
     <tr class="tt ct">
@@ -18,7 +18,11 @@
     ?>
 
         <tr class="pp ct">
-            <td><?= $ord['no']; ?></td>
+            <td>
+                <a href="?do=detail&id=<?= $ord['id']; ?>">
+                    <?= $ord['no']; ?>
+                </a>
+            </td>
             <td><?= $ord['total']; ?></td>
             <td><?= $ord['acc']; ?></td>
             <td><?= $ord['name']; ?></td>
@@ -33,5 +37,3 @@
     }
     ?>
 </table>
-
-
